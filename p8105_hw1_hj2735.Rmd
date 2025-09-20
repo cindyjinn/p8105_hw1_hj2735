@@ -58,7 +58,7 @@ ggplot(early_january_weather, aes(x = time_hour, y = temp, color = humid)) +
 
 ggsave("scatterplot_temp_vs_time.png", width = 7, height = 5)
 ```
-The scatterplot above shows temperature across time, with points colored by humidity. Warmer temperatures tend to appear in the daytime hours, and periods of high humidity often align with warmer temperatures. Overall, we can see that when time rises (approaching daytime), temperature rises and humidity increases.
+The scatterplot above shows temperature across time, with points colored by humidity. As we move from Jan 01 to Jan 15, the temperature tend to rise, and humidity tend to rise as well. The humidity tend to be highest when temperature is between 40F to 50F, and Jan 10 to Jan 15.
 
 
 ### Problem 2
