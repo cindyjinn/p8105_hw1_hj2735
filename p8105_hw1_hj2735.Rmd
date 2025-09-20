@@ -1,0 +1,21 @@
+---
+title: "p8105_hw1_hj2735"
+author: "Cindy Jin"
+date: "2025-09-20"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Homework 1
+
+This is an R Markdown document created for homework 1, by Haixin Jin, hj2735
+
+```{r cars}
+summary(cars)
+```
+
+
+
