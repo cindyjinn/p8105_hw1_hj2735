@@ -1,5 +1,3 @@
-# p8105_hw1_hj2735
-
 # P8105 Homework 1
 
 **Author:** Cindy Jin  
