@@ -1,7 +1,7 @@
 # P8105 Homework 1
 
 **Author:** Cindy Jin  
-**UNI:** hj2735
+**UNI:** hj2735  
 **Course:** P8105 – Data Science I  
 
 ---
