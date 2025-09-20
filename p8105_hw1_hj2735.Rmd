@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This is an R Markdown document created for homework 1, by Haixin Jin, hj2735
 
+### Problem 1 
+
 ```{r Problem 1}
 library(moderndive)
 data("early_january_weather")
@@ -40,6 +42,10 @@ Key variables inlcude:
 
 ``` {r}
 library(tidyverse)
+```
+
+
+```{r}
 
 ggplot(early_january_weather, aes(x = time_hour, y = temp, color = humid)) +
   geom_point() +
@@ -53,6 +59,39 @@ ggplot(early_january_weather, aes(x = time_hour, y = temp, color = humid)) +
 ggsave("scatterplot_temp_vs_time.png", width = 7, height = 5)
 ```
 The scatterplot above shows temperature across time, with points colored by humidity. Warmer temperatures tend to appear in the daytime hours, and periods of high humidity often align with warmer temperatures. Overall, we can see that when time rises (approaching daytime), temperature rises and humidity increases.
+
+
+### Problem 2
+
+```{r}
+set.seed(8105)
+df <- tibble(
+  sample = rnorm(10),
+  logical = sample > 0,
+  character = c("A","B","C","D","E","F","G","H","I","J"),
+  factor = factor(rep(c("low","medium","high"), length.out = 10),
+                  levels = c("low", "medium", "high"))
+)
+
+df
+```
+
+```{r}
+mean(df %>% pull(sample))       # works (numeric)
+mean(df %>% pull(logical))      # works (TRUE=1, FALSE=0 → proportion >0)
+mean(df %>% pull(character))    # fails (not numeric)
+mean(df %>% pull(factor))       # fails (factors not directly numeric)
+```
+
+```{r eval = FALSE}
+as.numeric(df$logical)     # TRUE → 1, FALSE → 0
+as.numeric(df$character)   # characters → NA (cannot be coerced)
+as.numeric(df$factor)      # factors → underlying integer codes
+```
+
+Taking the mean of the numeric sample works as expected, since these are standard Normal draws. The mean of the logical vector also works because R coerces `TRUE` to 1 and `FALSE` to 0, so the result represents the proportion of positive values in the sample. Attempting to take the mean of the character vector fails because character data cannot be meaningfully converted to numeric values. The mean of the factor variable also fails by default, because factors are categorical rather than numeric.
+
+After applying `as.numeric()`, the logical vector is converted to 0s and 1s. The character vector becomes `NA`, since characters cannot be coerced into numbers. The factor vector converts to its underlying integer codes, and because I explicitly defined the levels (`low = 1`, `medium = 2`, `high = 3`), the numeric representation is consistent with our intended ordering. This explains why numeric and logical means succeed, why character means fail, and why factor means depend on the coding of levels.
 
 
 
